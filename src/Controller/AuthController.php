@@ -78,7 +78,7 @@ final class AuthController extends AbstractController
 
             $token = $this->jwtManager->createFromPayload($user, [
                 'email' => $user->getEmail(),
-                // 'role' => $user->getRole(),
+                'role' => $user->getRole(),
                 'id' => $user->getId(),
             ]);
 
@@ -143,7 +143,7 @@ final class AuthController extends AbstractController
 
             $token = $this->jwtManager->createFromPayload($user, [
                 'email' => $user->getEmail(),
-                // 'role' => $user->getRole(),
+                'role' => $user->getRole(),
                 'id' => $user->getId(),
             ]);
 
@@ -154,9 +154,9 @@ final class AuthController extends AbstractController
                     'token' => $token
                             ]
                 ], 200);
-            $response->headers->setCookie(
-                Cookie::create('BEARER', $token, new \DateTime('+1 hour'))
-            );
+            // $response->headers->setCookie(
+            //     Cookie::create('BEARER', $token, new \DateTime('+1 hour'))
+            // );
             return $response;
 
         } catch (\Throwable $e) {
